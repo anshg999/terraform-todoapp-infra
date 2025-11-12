@@ -7,9 +7,9 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name  = "dev-rg-back-ansh"
-    storage_account_name = "aksstg1-anshg"
+    storage_account_name = "aksstg1anshg"
     container_name       = "akscontaineransh"
-    key                  = "dev.tfstate"
+    key                  = "dev1.tfstate"
   }
 }
 

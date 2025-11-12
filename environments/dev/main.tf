@@ -62,3 +62,11 @@ module "pip" {
   sku      = "Basic"
   tags     = local.common_tags
 }
+module "stg" {
+  depends_on = [module.rg]
+  source     = "../../modules/azurerm_storage_account"
+  sa_name    = "anshstg1234567"
+  rg_name    = "rg-dev-todoapp-01ansh"
+  location   = "centralindia"
+  tags       = local.common_tags
+}
