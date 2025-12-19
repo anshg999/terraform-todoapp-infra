@@ -1,12 +1,6 @@
 name: "Prod Terraform Workflow"
 
-on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main      
+on: push    
 
 permissions:
   id-token: write
@@ -30,23 +24,23 @@ jobs:
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
-        working-directory: environments/prod
+        working-directory: environments/dev
         
       - name: Terraform Init
         id: init
         run: terraform init -input=false  
-        working-directory: environments/prod
+        working-directory: environments/dev
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: environments/prod        
+        working-directory: environments/dev        
       
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -input=false
         continue-on-error: true
-        working-directory: environments/prod    
+        working-directory: environments/dev    
         
   terraform-apply:    
     runs-on: self-hosted
@@ -67,11 +61,11 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init -input=false  
-        working-directory: environments/prod
+        working-directory: environments/dev
 
       - name: Terraform Apply
         id: apply
         run: terraform apply --auto-approve
         continue-on-error: true
-        working-directory: environments/prod              
+        working-directory: environments/dev              
           
