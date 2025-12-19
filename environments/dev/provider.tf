@@ -6,9 +6,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "dev-rg-back-ansh"
-    storage_account_name = "aksstg1anshg"
-    container_name       = "akscontaineransh"
+    resource_group_name  = "ansh_rg1"
+    storage_account_name = "anshstg12345"
+    container_name       = "anshblob"
     key                  = "dev1.tfstate"
   }
 }
@@ -17,5 +17,5 @@ terraform {
 
 provider "azurerm" {
   features {}
-  subscription_id = "b1905f95-a2fa-411c-8afb-c515e3b94481"
+  subscription_id = "77312bdf-fff4-4e77-9d06-5e69870a682c"
 }
